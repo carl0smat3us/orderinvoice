@@ -5,6 +5,7 @@ import tempfile
 import firebase_admin
 from firebase_admin import credentials
 
+
 def create_firebase_config():
     firebase_config = {
         "apiKey": os.getenv("FIREBASE_API_KEY"),

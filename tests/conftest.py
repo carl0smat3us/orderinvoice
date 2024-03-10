@@ -6,9 +6,11 @@ from api.main import app
 
 load_dotenv()
 
+
 @fixture
 def client():
     return TestClient(app)
+
 
 @fixture
 def api_key_header():

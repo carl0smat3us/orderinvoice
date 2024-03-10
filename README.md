@@ -1,1 +1,1 @@
-# Racius Care - Invoice Backend
+# Racius Care - Invoice generation system
