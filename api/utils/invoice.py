@@ -25,8 +25,8 @@ def render_template(
     template = Template(template_file)
     rendered_html = template.render(context)
 
-    html_file = f"{output_filename}.html"
-    pdf_file = f"{output_filename}.pdf"
+    html_file = f"/tmp/{output_filename}.html"
+    pdf_file = f"/tmp/{output_filename}.pdf"
 
     # REVIEW: Enable this to Save the rendered HTML to a file
     with open(html_file, "w") as file:
