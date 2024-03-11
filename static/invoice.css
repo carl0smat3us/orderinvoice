@@ -1,20 +1,5 @@
-@font-face {
-  font-family: Pacifico;
-  src: url(./pacifico.ttf);
-}
-@font-face {
-  font-family: Source Sans Pro;
-  font-weight: 400;
-  src: url(./sourcesanspro-regular.otf);
-}
-@font-face {
-  font-family: Source Sans Pro;
-  font-weight: 700;
-  src: url(./sourcesanspro-bold.otf);
-}
-
 @page {
-  font-family: Pacifico;
+  font-family: Roboto;
   margin: 3cm;
   @bottom-left {
     color: #201D63;
@@ -29,7 +14,7 @@
 
 html {
   color: #14213d;
-  font-family: Source Sans Pro;
+  font-family: Roboto;
   font-size: 11pt;
   line-height: 1.6;
 }
@@ -39,7 +24,7 @@ body {
 
 h1 {
   color: #201D63;
-  font-family: Pacifico;
+  font-family: Madimi One;
   font-size: 40pt;
   margin: 0;
 }
