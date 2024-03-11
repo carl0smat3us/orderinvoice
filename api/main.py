@@ -10,7 +10,7 @@ from api.utils.secure import get_api_key
 from api.utils.invoice import render_template
 from api.settings import *
 from fastapi.templating import Jinja2Templates
-import time, datetime
+import uvicorn, datetime
 
 app = FastAPI()
 
@@ -58,3 +58,7 @@ async def invoice(order_id: str, _=Security(get_api_key)):
 @app.get("/")
 def root(_=Security(get_api_key)):
     return {"message": "Welcome to the RACIUS CARE INVOICE API!"}
+
+
+if __name__ == "__main__":
+    uvicorn.run("main:app", host="0.0.0.0", port=8000, reload=True)

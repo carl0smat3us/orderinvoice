@@ -6,5 +6,8 @@
 		{ "src": "/", "dest": "api/main.py" },
 		{ "src": "/docs", "dest": "api/main.py" },
 		{ "src": "/openapi.json", "dest": "api/main.py" }
-	]
+	],
+	"env": {
+    "APP_MODULE": "main:app"
+  }
 }
