@@ -16,8 +16,9 @@ app = FastAPI()
 
 templates = Jinja2Templates(directory="/tmp/")
 
+
 @app.get("/invoice/{order_id}")
-async def invoice(order_id: str, _= Security(get_api_key)):
+async def invoice(order_id: str, _=Security(get_api_key)):
     ref = db.reference(f"/orders/{order_id}")
     order = ref.get()
 
@@ -28,26 +29,32 @@ async def invoice(order_id: str, _= Security(get_api_key)):
 
     context_data = ref.get()
     context_data["order_id"] = order_id
-    
+
     data_string = context_data["createdAt"]
-    format = '%Y-%m-%dT%H:%M:%S.%fZ'
+    format = "%Y-%m-%dT%H:%M:%S.%fZ"
 
     tt = datetime.datetime.strptime(data_string, format)
     formatted_time = tt.strftime("%Y-%m-%d %H:%M")
-     
+
     context_data["createdAt"] = formatted_time
-    template_html:str
-    
+    template_html: str
+
     with open(TEMPLATE_HTML_PATH) as template:
         template_html = template.read()
-    template_url =  render_template(template_html, context_data, TEMPLATE_CSS, OUTPUT_FILENAME)
-    
-    response = FileResponse(template_url, media_type="application/pdf", headers={
-        "Content-Disposition": f"inline; filename=${template_url.replace('/tmp', '')}"
-    })
+    template_url = render_template(
+        template_html, context_data, TEMPLATE_CSS, OUTPUT_FILENAME
+    )
+
+    response = FileResponse(
+        template_url,
+        media_type="application/pdf",
+        headers={
+            "Content-Disposition": f"inline; filename=${template_url.replace('/tmp', '')}"
+        },
+    )
     return response
 
 
 @app.get("/")
-def root(_= Security(get_api_key)):
+def root(_=Security(get_api_key)):
     return {"message": "Welcome to the RACIUS CARE INVOICE API!"}
