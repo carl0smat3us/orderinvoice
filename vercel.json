@@ -10,5 +10,5 @@
 	"env": {
     "APP_MODULE": "main:app"
   },
-	"installCommand": "sudo apt install libpango-1.0-0 libharfbuzz0b libpangoft2-1.0-0 libffi-dev libjpeg-dev libopenjp2-7-dev"
+	"buildCommand": "sudo apt install libpango-1.0-0 libharfbuzz0b libpangoft2-1.0-0 libffi-dev libjpeg-dev libopenjp2-7-dev"
 }
