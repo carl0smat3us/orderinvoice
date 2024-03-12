@@ -22,10 +22,15 @@ body {
   margin: 0;
 }
 
+img#logo {
+  width: 200px;
+  height: 125px;
+}
+
 h1 {
   color: #201D63;
   font-family: Madimi One;
-  font-size: 40pt;
+  font-size: 25pt;
   margin: 0;
 }
 
