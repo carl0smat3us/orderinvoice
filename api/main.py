@@ -10,9 +10,27 @@ from api.utils.secure import get_api_key
 from api.utils.invoice import render_template
 from api.settings import *
 from fastapi.templating import Jinja2Templates
-import uvicorn, datetime
+from fastapi.middleware.cors import CORSMiddleware
+import datetime
+
+origins = [
+    "https://cuddly-meme-jww47799jrj2q6v7-3000.app.github.dev",
+    "https://raciuscare.com",
+    "https://raciuscare.vercel.app",
+    "http://localhost",
+    "http://localhost:8080",
+    "http://localhost:3000",
+]
+
 
 app = FastAPI()
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 templates = Jinja2Templates(directory="/tmp/")
 
