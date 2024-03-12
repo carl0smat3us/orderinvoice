@@ -7,6 +7,7 @@
 - Weasyprintp
 - Jinja2
 - Firebase Admin
+- Docker
 
 ## Getting Started
 
@@ -20,14 +21,13 @@ You can see how to install poetry in your computer accessing [this link](https:/
 poetry shell
 ```
 
-
-2. Create a .env.local file in the root directory following the 
+3. Create a .env.local file in the root directory following the
 env.example file.
 
-3. Run the the server.
+4. Run the the server.
 
 ```bash
 uvicorn main:app --reload
 ```
 
-4. Still Working
+5. Still Working
