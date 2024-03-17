@@ -4,7 +4,7 @@
 
 - Python
 - Fast Api
-- Weasyprintp
+- Weasyprint
 - Jinja2
 - Firebase Admin
 - Docker
