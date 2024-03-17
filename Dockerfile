@@ -1,5 +1,5 @@
 # 
-FROM python:3.9
+FROM python:3.10
 
 # 
 WORKDIR /code
@@ -7,9 +7,11 @@ WORKDIR /code
 # 
 COPY ./requirements.txt /code/requirements.txt
 
-# 
+# Install Project dependencies
+RUN pip install --root-user-action=ignore --no-cache-dir --upgrade -r /code/requirements.txt
+
+# Install Weasyprint dependencies
 RUN apt install libpango-1.0-0 libharfbuzz0b libpangoft2-1.0-0 libffi-dev libjpeg-dev libopenjp2-7-dev
-RUN pip install --no-cache-dir --upgrade -r /code/requirements.txt
 
 # 
 COPY . .

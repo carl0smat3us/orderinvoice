@@ -9,6 +9,7 @@ from firebase_admin import db
 from api.utils.secure import get_api_key
 from api.utils.invoice import render_template
 from api.settings import *
+
 from fastapi.templating import Jinja2Templates
 from fastapi.middleware.cors import CORSMiddleware
 import datetime
@@ -33,6 +34,7 @@ app.add_middleware(
 )
 
 templates = Jinja2Templates(directory="/tmp/")
+
 
 
 @app.get("/invoice/{order_id}")
