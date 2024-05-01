@@ -1,4 +1,4 @@
-# Racius Care - Invoice generation system
+# Invoice generation system for e-commerce
 
 ## Main technologies
 
