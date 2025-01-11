@@ -1,59 +1,52 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>RACIUS CARE - COMÉRCIO GERAL E PRESTAÇÃO DE SERVIÇOS</title>
-    <meta name="description" content="RACIUS CARE - COMÉRCIO E PRESTAÇÃO DE SERVIÇOS">
+    <title>Invoice</title>
+    <meta name="description" content="Invoice">
 
     <style>
-      @import url('https://fonts.googleapis.com/css2?family=Madimi+One&family=Pacifico&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap')
+      @import url('https://fonts.googleapis.com/css2?family=Madimi+One&family=Pacifico&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap')
     </style>
   </head>
 
   <body>
-    <img
-      id="logo"
-      src="https://raciuscare.com/logo.png"
-    >
-
-    <h1>Factura profomora</h1>
+    <h1>Proforma invoice</h1>
 
     <aside>
-      <h3>RACIUS CARE - COMÉRCIO GERAL E PRESTAÇÃO DE SERVIÇOS</h3>
+      <h3>Informations</h3>
       <ul>
-         <li><strong>NIF: </strong>32372483343</li>
-         <li><strong>Endereço: </strong>Luanda, Cazenga</li>
-         <li><strong>Tel.: </strong>+244 935 420 498</li>
-         <li><strong>Email: </strong>geral@raciuscare.com</li>
+         <li><strong>Tax ID: </strong>3x4x7xx48xx4x3</li>
+         <li><strong>Address: </strong>DEF Street</li>
+         <li><strong>Phone: </strong>+33 7x5 xx0 x9x</li>
+         <li><strong>Email: </strong>xxx@example.com</li>
    </ul>
     </aside>
 
     <aside>
       <ul>
-         <span class="text-bold">Dados do cliente</span>
-         <li><strong>Nome: </strong> {{ firstName }} {{ lastName }}</li>
-         <li><strong>Telefone: </strong> {{ phone }}</li>
-         <li><strong>Endereço: </strong> {{ address }}</li>
+         <span class="text-bold">Client Information</span>
+         <li><strong>Name: </strong> {{ name }}</li>
+         <li><strong>Phone: </strong> {{ phone }}</li>
+         <li><strong>Address: </strong> {{ address }}</li>
      </ul>
     </aside>
 
     <dl id="informations">
-      <dt>Referência</dt>
-      <dd>{{ order_id }}</dd>
-      <dt>Data</dt>
-      <dd>{{ createdAt }}</dd>
+      <dt>Reference</dt>
+      <dd>{{ reference }}</dd>
+      <dt>Date</dt>
+      <dd>{{ created_at }}</dd>
     </dl>
-
-    {% set ns = namespace(total_price=0) %}
 
     <table>
       <thead>
         <tr>
-         <th>Descrição</th>
-         <th>IVA(%)</th>
-         <th>Desc.</th>
-         <th>Qtd.</th>
-         <th>Valor unit.</th>
-         <th>Total unit.</th>
+         <th>Description</th>
+         <th>VAT(%)</th>
+         <th>Discount</th>
+         <th>Quantity</th>
+         <th>Unit Price</th>
+         <th>Total Unit Price</th>
         </tr>
       </thead>
       <tbody>
@@ -63,9 +56,8 @@
           <td>-</td>  
           <td>-</td>  
           <td>{{ product['quantity'] }}</td>
-          <td>{{ "{:,.2f}".format(product['price']) }} kz</td>
-          <td>{{ "{:,.2f}".format(product['price'] * product['quantity']) }} kz</td>  
-          {% set ns.total_price = ns.total_price + (product['price'] * product['quantity']) %}
+          <td>{{ "{:,.2f}".format(product['unit_price']) }} €</td>
+          <td>{{ "{:,.2f}".format(product['total_price']) }} €</td>
          </tr>
         {% endfor %}
       </tbody>
@@ -75,14 +67,14 @@
       <table id="total">
         <thead>
           <tr>
-            <th>Data</th>
-            <th>Total a pagar</th>
+            <th>Date</th>
+            <th>Total to Pay</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td>{{ createdAt }}</td>
-            <td>{{ "{:,.2f}".format(ns.total_price) }} kz</td>
+            <td>{{ created_at }}</td>
+            <td>{{ "{:,.2f}".format(total_price) }} €</td>
           </tr>
         </tbody>
       </table>

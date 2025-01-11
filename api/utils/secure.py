@@ -1,6 +1,7 @@
-from fastapi import HTTPException, status, Security
-from fastapi.security import APIKeyHeader, APIKeyQuery
 import os
+
+from fastapi import HTTPException, Security, status
+from fastapi.security import APIKeyHeader, APIKeyQuery
 
 API_KEYS = [os.getenv("API_KEY")]
 
