@@ -26,6 +26,11 @@ def get_api_key(
     Raises:
         HTTPException: If the API key is invalid or missing.
     """
+    print(api_key_query in API_KEYS)
+    print(api_key_query in API_KEYS)
+
+    print(API_KEYS)
+
     if api_key_query in API_KEYS:
         return api_key_query
     if api_key_header in API_KEYS:

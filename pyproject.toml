@@ -23,6 +23,9 @@ lint = "black api/ && isort api/"
 run = "uvicorn api.main:app --reload"
 seed = { cmd = "python api/database/seed.py" }
 
+[tool.pytest.ini_options]
+log_level = "ERROR"
+
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
