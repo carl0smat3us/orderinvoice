@@ -36,6 +36,64 @@ app.add_middleware(
 templates = Jinja2Templates(directory="/tmp/")
 
 
+@app.get("/data/{order_id}")
+async def invoice_data(order_id: str):
+    # Query the Invoice table for the specific order_id
+    order = execute("SELECT * FROM Invoice WHERE invoice_id = ?", (order_id,))
+
+    if order is None:
+        raise HTTPException(status_code=404, detail="Invoice not found")
+
+    order = dict(order)
+
+    client = dict(
+        execute("SELECT * FROM Client WHERE client_id = ?", (order["client_id"],))
+    )
+
+    invoice_products = execute(
+        "SELECT * from InvoiceProduct WHERE invoice_id = ?",
+        (order["invoice_id"],),
+        fetchall=True,
+    )
+
+    products = []
+
+    for product in list(invoice_products):
+        product = dict(product)
+
+        product_data = dict(
+            execute(
+                "SELECT * FROM Product WHERE product_id = ?",
+                (product["product_id"],),
+            )
+        )
+
+        products.append(
+            {
+                "name": product_data["name"],
+                "unit_price": product_data["unit_price"],
+                "quantity": product["quantity"],
+                "total_price": product["total_price"],
+            }
+        )
+
+    tt = datetime.datetime.strptime(order["created_at"], "%Y-%m-%dT%H:%M:%S.%fZ")
+    order["created_at"] = tt.strftime("%Y-%m-%d %H:%M")
+
+    # Prepare template context data
+    context_data = {
+        "name": client["name"],
+        "phone": client["phone"],
+        "address": client["address"],
+        "reference": order["reference"],
+        "created_at": order["created_at"],
+        "products": products,
+        "total_price": order["total_price"],
+    }
+
+    return context_data
+
+
 @app.get("/invoice/{order_id}")
 async def invoice(order_id: str):
     # Query the Invoice table for the specific order_id
