@@ -1,4 +1,10 @@
 # Invoice Generator
+Automated invoice generation in an e-commerce scenario.
+
+![Gui Screenshot](https://github.com/user-attachments/assets/591c26c2-e205-4818-a7a6-4827d141738c)
+![Invoice example](https://github.com/user-attachments/assets/e48bbe74-6968-42bb-b851-e2e7871415b5)
+
+You can check the full invoice PDF [here](https://github.com/user-attachments/files/18389705/invoice_1.pdf).
 
 ## Main Technologies
 
