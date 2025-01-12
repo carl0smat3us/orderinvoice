@@ -17,11 +17,14 @@ pdfkit = "^1.0.0"
 weasyprint = "^61.2"
 isort = "^5.13.2"
 taskipy = "^1.14.1"
+requests = "^2.32.3"
+pyqt5 = "^5.15.11"
 
 [tool.taskipy.tasks]
-lint = "black api/ && isort api/"
+lint = "black api/ gui/ tests/ && isort api/ gui/ tests/"
 run = "uvicorn api.main:app --reload"
-seed = { cmd = "python api/database/seed.py" }
+gui = "python gui/"
+seed = "python api/database/seed.py"
 
 [tool.pytest.ini_options]
 log_level = "ERROR"
